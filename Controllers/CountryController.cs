@@ -35,5 +35,11 @@ namespace country.back {
             return ret ? Ok() : StatusCode((int)HttpStatusCode.InternalServerError);
         }
 
+        [AllowAnonymous]
+        [HttpGet("Source")]
+        public string Source() {
+            return "https://github.com/fabioschaffer/country.back";
+        }
+
     }
 }

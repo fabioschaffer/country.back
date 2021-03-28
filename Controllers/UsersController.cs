@@ -16,7 +16,6 @@ namespace country.back {
             if (user == null) {
                 return BadRequest(new { message = "Usuário ou senha inválido." });
             }
-
             return Ok(user);
         }
     }
