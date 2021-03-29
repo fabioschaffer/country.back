@@ -2,6 +2,8 @@ using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Net.Http;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace country.back {
@@ -38,6 +40,7 @@ namespace country.back {
         });
 
         public async Task<bool> Save(CountryModel model) => await Task.Run(() => {
+            if (!IsValid(model.Id)) return false;
             string info = JsonConvert.SerializeObject(model);
             string sql = "SELECT COUNT(*) FROM Country WHERE Id = :id";
             bool exists = BLL.Cnn(cfg).ExecScalar<long>(sql, new { id = model.Id }) == 1;
@@ -47,5 +50,31 @@ namespace country.back {
                 BLL.Cnn(cfg).InsertSQL(nameof(Country), new { model.Id, info });
             return true;
         });
+
+        private bool IsValid(int id) {
+            try {
+                using HttpClient httpClient = new HttpClient {
+                    BaseAddress = new Uri(cfg.GetSection("ApiGraphCountries").Value)
+                };
+                var query = new {
+                    query = @"query {
+                    Country (_id:  """ + id + @""") 
+                            { _id } 
+                    }"
+                };
+                using HttpRequestMessage request = new HttpRequestMessage {
+                    Method = HttpMethod.Post,
+                    Content = new StringContent(JsonConvert.SerializeObject(query), Encoding.UTF8, "application/json")
+                };
+                using Task<HttpResponseMessage> response = httpClient.SendAsync(request);
+                response.Wait();
+                using HttpResponseMessage result = response.Result;
+                result.EnsureSuccessStatusCode();
+                Task<string> content = result.Content.ReadAsStringAsync();
+                return JsonConvert.DeserializeObject<dynamic>(content.Result).data.Country.Count == 1;
+            } catch {
+                return false;
+            }
+        }
     }
 }
