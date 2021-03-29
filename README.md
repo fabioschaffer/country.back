@@ -7,8 +7,9 @@ Aplicação:
  
 Banco de dados:
  - Utiliza banco de dados Microsoft SQL Server (do Azure).
- - Acesso ao banco de dados via pacote Microsoft.Data.SqlClient (2.1.2)
- - Abstração de dados de dados via pacote Dapper (2.0.78).
+ - Acesso ao banco de dados via pacote Microsoft.Data.SqlClient (2.1.2).
+ - Abstração para conectar ao banco e retornar os dados via pacote Dapper (2.0.78).
+ - Script para criação das tabelas está em Database_Script.sql.
 
 Publicação:
  - API está publicada no Azure em http://countryapplicationapi.azurewebsites.net.
@@ -17,5 +18,6 @@ Ambiente de desenvolvimento:
  - Foi utilizado o Microsoft Microsoft Visual Studio Community 2019 (16.8.4).
 
 Executar a aplicação:
- - Para executar a aplicação, abrir o Visual Studio e abrir o arquivo country.back.sln.
+ - Para executar a aplicação, abrir o arquivo country.back.sln no Visual Studio.
+ - Caso seja necessário modificar a conexão ao banco de dados, alterar em appsettings.json, chave 'ConnectionString'.
  - Executar a aplicação (Start Debugging).
