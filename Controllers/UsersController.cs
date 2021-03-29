@@ -11,8 +11,8 @@ namespace country.back {
         [AllowAnonymous]
         [HttpPost("authenticate")]
         public async Task<IActionResult> Authenticate([FromBody] AuthenticateModel model) {
-            UserService service = new UserService();
-            User user = await service.Authenticate(model.Username, model.Password);
+            User user = new User();
+            user = await user.Authenticate(model.Username, model.Password);
             if (user == null) {
                 return BadRequest(new { message = "Usuário ou senha inválido." });
             }

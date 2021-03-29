@@ -13,6 +13,7 @@ Banco de dados:
 
 Publicação:
  - API está publicada no Azure em http://countryapplicationapi.azurewebsites.net.
+ - Arquivo Dockerfile existente para criação de uma imagem Docker contendo a API.
 
 Ambiente de desenvolvimento:
  - Foi utilizado o Microsoft Microsoft Visual Studio Community 2019 (16.8.4).

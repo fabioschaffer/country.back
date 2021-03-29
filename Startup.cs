@@ -9,7 +9,7 @@ namespace country.back {
     public class Startup {
 
         public void ConfigureServices(IServiceCollection services) {
-            services.AddCors(); 
+            services.AddCors();
             services.AddControllers();
             services.AddAuthentication("BasicAuthentication")
                 .AddScheme<AuthenticationSchemeOptions, BasicAuthenticationHandler>("BasicAuthentication", null);

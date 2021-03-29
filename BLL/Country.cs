@@ -10,8 +10,6 @@ namespace country.back {
 
     public class Country : BaseClass {
 
-        public Country() { }
-
         public Country(IConfiguration cfg) : base(cfg) { }
 
         private CountryModel Load(dynamic d) {

@@ -1,8 +1,13 @@
 using System.Threading.Tasks;
 
 namespace country.back {
-
-    public class UserService {
+    public class User
+    {
+        public int Id { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public string Username { get; set; }
+        public string Password { get; set; }
 
         public async Task<User> Authenticate(string username, string password) {
             User user = await Task.Run(() => {
