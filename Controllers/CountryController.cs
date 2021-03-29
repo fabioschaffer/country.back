@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using System.Collections.Generic;
@@ -40,6 +41,5 @@ namespace country.back {
         public string Source() {
             return "https://github.com/fabioschaffer/country.back";
         }
-
     }
 }

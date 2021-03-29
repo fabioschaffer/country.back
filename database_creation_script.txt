@@ -3,6 +3,3 @@ CREATE TABLE Country (
     Info nvarchar(MAX),
     CONSTRAINT PK_Country PRIMARY KEY (Id)
 );
-
-
-insert into Country(id, Info) values (1, 'aaa')
