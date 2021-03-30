@@ -7,5 +7,6 @@ namespace country.back {
         public decimal Density { get; set; }
         public string Capital { get; set; }
         public string Language { get; set; }
+        public string Address { get; set; }
     }
 }

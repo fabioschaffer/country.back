@@ -14,7 +14,6 @@ namespace country.back {
             if (d == null) {
                 return null;
             }
-
             CountryModel2 country = JsonConvert.DeserializeObject<CountryModel2>(Convert.ToString(d.INFO));
             country.Id = d.ID;
             return country;
@@ -42,7 +41,9 @@ namespace country.back {
             if (!IsValid(model.Id)) {
                 return false;
             }
-
+            if (model.Address == null) {
+                return false;
+            }
             string info = JsonConvert.SerializeObject(model);
             string sql = "SELECT COUNT(*) FROM Country WHERE Id = :id";
             bool exists = BLL.Cnn(cfg).ExecScalar<long>(sql, new { id = model.Id }) == 1;
