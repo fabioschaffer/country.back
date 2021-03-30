@@ -9,35 +9,35 @@ namespace country.back {
 
     [Authorize]
     [ApiController]
-    [ApiVersion("1")]
+    [ApiVersion("2")]
     [Route("v{version:apiVersion}/country")]
-    public class CountryController : ControllerBase {
+    public class CountryController2 : ControllerBase {
 
         private readonly IConfiguration cfg;
 
-        public CountryController(IConfiguration cfg) => this.cfg = cfg;
+        public CountryController2(IConfiguration cfg) => this.cfg = cfg;
 
         [HttpGet("GetAll")]
-        public async Task<IEnumerable<CountryModel>> GetAll() {
-            Country country = new Country(cfg);
+        public async Task<IEnumerable<CountryModel2>> GetAll() {
+            Country2 country = new Country2(cfg);
             return await country.GetAll();
         }
 
         [HttpGet("GetItem")]
-        public async Task<CountryModel> GetItem(int id) {
-            Country country = new Country(cfg);
+        public async Task<CountryModel2> GetItem(int id) {
+            Country2 country = new Country2(cfg);
             return await country.Get(id);
         }
 
         [HttpPost("save")]
-        public async Task<IActionResult> Save([FromBody] CountryModel model) {
-            Country country = new Country(cfg);
+        public async Task<IActionResult> Save([FromBody] CountryModel2 model) {
+            Country2 country = new Country2(cfg);
             bool ret = await country.Save(model);
             return ret ? Ok() : StatusCode((int)HttpStatusCode.InternalServerError);
         }
 
         [AllowAnonymous]
         [HttpGet("Source")]
-        public string Source() => "https://github.com/fabioschaffer/country.back 1";
+        public string Source() => "https://github.com/fabioschaffer/country.back 2";
     }
 }

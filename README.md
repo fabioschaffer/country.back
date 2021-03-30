@@ -3,7 +3,7 @@ Web API para salvar dados do país. Arquitetura:
 Aplicação:
  - Framework: Microsoft .NET Core 3.1.
  - Habilitada autenticação 'Basic'.
- - Swagger habilitado via pacote Swashbuckle.AspNeCore (6.1.1). Para visualizar, acessar http://countryapplicationapi.azurewebsites.net.
+ - Swagger habilitado via pacote Swashbuckle.AspNeCore (6.1.1). Para visualizar, acessar http://countryapplicationapi.azurewebsites.net/swagger.
  - Configuração da aplicação centralizada no arquivo appsettings.json.
  
 Banco de dados:

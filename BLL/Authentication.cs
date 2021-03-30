@@ -11,8 +11,8 @@ using System.Text.Encodings.Web;
 using System.Threading.Tasks;
 
 namespace country.back {
-    public class BasicAuthenticationHandler : AuthenticationHandler<AuthenticationSchemeOptions> {
-        public BasicAuthenticationHandler(IOptionsMonitor<AuthenticationSchemeOptions> options,
+    public class Authentication: AuthenticationHandler<AuthenticationSchemeOptions> {
+        public Authentication(IOptionsMonitor<AuthenticationSchemeOptions> options,
             ILoggerFactory logger,
             UrlEncoder encoder,
             ISystemClock clock) : base(options, logger, encoder, clock) { }
