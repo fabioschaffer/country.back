@@ -5,6 +5,7 @@ Aplicação:
  - Habilitada autenticação 'Basic'.
  - Swagger habilitado via pacote Swashbuckle.AspNeCore (6.1.1). Para visualizar, acessar http://countryapplicationapi.azurewebsites.net/swagger.
  - Configuração da aplicação centralizada no arquivo appsettings.json.
+ - Rotas implementadas com uso de versionamento (ApiVersionAttribute).
  
 Banco de dados:
  - Utiliza banco de dados Microsoft SQL Server (do Azure).
