@@ -29,7 +29,7 @@ namespace country.back {
             return await country.Get(id);
         }
 
-        [HttpPost("save")]
+        [HttpPost("Save")]
         public async Task<IActionResult> Save([FromBody] CountryModel model) {
             Country country = new Country(cfg);
             bool ret = await country.Save(model);

@@ -13,10 +13,7 @@ namespace country.back {
         public Country(IConfiguration cfg) : base(cfg) { }
 
         private CountryModel Load(dynamic d) {
-            if (d == null) {
-                return null;
-            }
-
+            if (d == null) return null;
             CountryModel country = JsonConvert.DeserializeObject<CountryModel>(Convert.ToString(d.INFO));
             country.Id = d.ID;
             return country;
@@ -41,10 +38,7 @@ namespace country.back {
         });
 
         public async Task<bool> Save(CountryModel model) => await Task.Run(() => {
-            if (!IsValid(model.Id)) {
-                return false;
-            }
-
+            if (!IsValid(model.Id)) return false;
             string info = JsonConvert.SerializeObject(model);
             string sql = "SELECT COUNT(*) FROM Country WHERE Id = :id";
             bool exists = BLL.Cnn(cfg).ExecScalar<long>(sql, new { id = model.Id }) == 1;
@@ -53,7 +47,6 @@ namespace country.back {
             } else {
                 BLL.Cnn(cfg).InsertSQL(nameof(Country), new { model.Id, info });
             }
-
             return true;
         });
 

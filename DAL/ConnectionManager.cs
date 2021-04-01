@@ -13,10 +13,7 @@ namespace country.back {
         public ConnectionManager(string cnnStr) => ConnString = cnnStr;
 
         private void FormatArgs(ref string sql, object args) {
-            if (args == null) {
-                return;
-            }
-
+            if (args == null) return;
             if (args is Dictionary<string, object> dic) {
                 foreach (KeyValuePair<string, object> item in dic) {
                     sql = sql.Replace(":" + item.Key, "@" + item.Key);
